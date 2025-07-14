@@ -1,5 +1,5 @@
 import express from "express";
-import {Attendance} from "../Modles/attendance.js";
+import {Attendance} from "../Models/attendance.js";
 export const getAllAttendance = async (req, res) => {
     try {
         const attendanceRecords = await Attendance.find();

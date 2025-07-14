@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/leave' ,verifyAdminorManager, getAllLeaves);
 router.get('/leave/myleaves', getLeaveById);
-router.post('/leave',createLeave);
+router.post('/leave/apply',createLeave);
 router.patch('/leave/:id/approve',verifyAdminorManager, updateLeave);
 
 export default router;

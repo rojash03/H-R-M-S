@@ -5,6 +5,7 @@ import userAuthRoutes from './Routes/user.auth.router.js';
 import attendanceRoutes from './Routes/Attendance.routes.js';
 import departmentRoutes from './Routes/department.routes.js';
 import employeeRoutes from './Routes/employee.routes.js';
+import leaveRoutes from './Routes/leave.route.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use("/api", userAuthRoutes);
 app.use("/api", attendanceRoutes);
 app.use("/api", departmentRoutes);
 app.use("/api", employeeRoutes);
+app.use("/api", leaveRoutes);
 
 app.listen(PORT, () => {
   console.log(` Server is running on port ${PORT}`);

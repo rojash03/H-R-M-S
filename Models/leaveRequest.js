@@ -51,4 +51,4 @@ export const leaveRequestSchema = new mangoose.Schema({
 }, {
     timestamps: true,
 });
-const leave = mangoose.model('LeaveRequest', leaveRequestSchema);
+export const leave = mangoose.model('LeaveRequest', leaveRequestSchema);
