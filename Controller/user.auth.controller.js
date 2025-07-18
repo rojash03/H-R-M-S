@@ -3,6 +3,7 @@ import { User } from "../Models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 dotenv.config();
 
 export const regestirUser = async (req, res) => {
@@ -118,3 +119,42 @@ const Users = await User.find();
   }
 };
 
+ export const sendEmail = async (req, res) => {
+  try {
+    // Create transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'np05cp4a240283@iic.edu.np',
+        pass: 'wbyh obwl xkce fovy'
+      }
+    });
+
+    // Email options
+    const mailOptions = {
+      from: 'np05cp4a240283@iic.edu.np',
+      to: 'thaparojash703@gmail.com',
+      subject: 'Hi there! This is a test email',
+      text: 'Hello! This is a test email sent using Nodemailer and Node.js.',
+      html: `<p>We're happy to let you know that your message has been created successfully!
+<br>
+You can now view, edit, or share your message at any time by logging into your account.
+<br>
+If you have any questions or need assistance, feel free to reach out to our support team.</p>`
+    };
+
+    // Send mail
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Error:', error);
+        return res.status(500).json({ message: "Error sending email", error: error.message });
+      }
+      console.log('Email sent:', info.response);
+      return res.status(200).json({ message: "Email sent successfully", info: info.response });
+    });
+
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).send("Error sending email");
+  }
+}
