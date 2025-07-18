@@ -5,7 +5,7 @@ import {
   getAttendanceById,
   createCheckIn,
   createCheckOut,
-} from "../controller/attendance.controller.js";
+} from "../Controller/attendance.controller.js";
 import { verifyAdminorManager } from "../mildware/verify.token.js";
 const router = express.Router();
 
